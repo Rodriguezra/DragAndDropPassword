@@ -1,6 +1,6 @@
 let cards = [];
-let SSH, TCP3way, Protocol, AlgNegoation, Diffie, Cybercrime, lockedComp, lockedOut;
-let SSHImg, TCP3wayImg, ProtocolImg, AlgNegoationImg, pDiffieImg, CybercrimeImg, LockedComputerImg, LockedOutImg;
+let Password, worst, secondWorst, secondBest, Best, Cybercrime, lockedComp, lockedOut;
+let PasswordImg, worstImg, secondWorstImg, secondBestImg, BestImg, CybercrimeImg, LockedComputerImg, LockedOutImg;
 let center1, center2, center3, center4;
 let screen = 0;
 let widthConstraint, heightConstraint;
@@ -16,11 +16,11 @@ let cancel = false;
 //lose = 4
 
 function setCardsoffScreen() {
-  AlgNegoation.pos = { x: -100, y: -100 };
-  Protocol.pos = { x: -100, y: -100 };
-  TCP3way.pos = { x: -100, y: -100 };
-  Diffie.pos = { x: -100, y: -100 };
-  SSH.pos = { x: -300, y: -300 };
+  secondBest.pos = { x: -100, y: -100 };
+  secondWorst.pos = { x: -100, y: -100 };
+  worst.pos = { x: -100, y: -100 };
+  Best.pos = { x: -100, y: -100 };
+  Password.pos = { x: -300, y: -300 };
   if (screen === 0) {
     Cybercrime.pos = { x: width / 2, y: 160 + 95 };
   }
@@ -52,21 +52,21 @@ function mousePressed() {
     //press begin button or restart button pressed
     if (mouseX > width / 2 - 50 && mouseX < width / 2 + 50 && mouseY > height / 2 + 120 && mouseY < height / 2 + 160) {
       screen = 2;
-      TCP3way.position = createVector(width / 4 - 67, height - (height / 3) + 95);
-      Protocol.position = createVector(width / 2 - 145, height - (height / 3) + 175);
-      AlgNegoation.position = createVector(width / 2 - 60, height - (height / 3) + 95);
-      Diffie.position = createVector(width / 2 + 33, height - (height / 3) + 175);
-      SSH.pos = { x: 190, y: 285 };
+      worst.position = createVector(width / 4 - 67, height - (height / 3) + 95);
+      secondWorst.position = createVector(width / 2 - 145, height - (height / 3) + 175);
+      secondBest.position = createVector(width / 2 - 60, height - (height / 3) + 95);
+      Best.position = createVector(width / 2 + 33, height - (height / 3) + 175);
+      Password.pos = { x: 190, y: 285 };
       Cybercrime.pos = { x: width / 2, y: 160 + 95 };
     }
   }
   else if (screen == 2 && confirm && !cancel) {
     if (mouseX > width / 2 + 20 && mouseX < width / 2 + 140 && mouseY > height / 2 + 250 && mouseY < height / 2 + 290) {
       if (
-        dist(TCP3way.x, TCP3way.y, center1.x, center1.y) < 1 &&
-        dist(Protocol.x, Protocol.y, center2.x, center2.y) < 1 &&
-        dist(AlgNegoation.x, AlgNegoation.y, center3.x, center3.y) < 1 &&
-        dist(Diffie.x, Diffie.y, center4.x, center4.y) < 1
+        dist(worst.x, worst.y, center1.x, center1.y) < 1 &&
+        dist(secondWorst.x, secondWorst.y, center2.x, center2.y) < 1 &&
+        dist(secondBest.x, secondBest.y, center3.x, center3.y) < 1 &&
+        dist(Best.x, Best.y, center4.x, center4.y) < 1
       ) {
         console.log("you win!");
         showScreenWin();
@@ -91,7 +91,7 @@ function mousePressed() {
     // Check if the "Learn More" button is clicked
     if (mouseX > width - 150 && mouseX < width - 10 && mouseY > height - 45 && mouseY < height - 10) {
       // Display a link to a website for further learning
-      window.open('https://dumpthecode.pro/articles/overview-of-the-ssh-handshake-process_32');
+      window.open('https://www.cisa.gov/secure-our-world/use-strong-passwords');
     }
   }
 }
@@ -157,11 +157,11 @@ function checkIfConfirm() {
 }
 
 function preload() {
-  SSHImg = loadImage('assets/SSH/1/SSH.png');
-  TCP3wayImg = loadImage('assets/SSH/1/TCP3way.png');
-  ProtocolImg = loadImage('assets/SSH/1/Protocol.png');
-  AlgNegoationImg = loadImage('assets/SSH/1/AlgNegoation.png');
-  DiffieImg = loadImage('assets/SSH/1/Diffie.png');
+  PasswordImg = loadImage('assets/Password/1/Password.png');
+  worstImg = loadImage('assets/Password/1/worst.png');
+  secondWorstImg = loadImage('assets/Password/1/secondWorst.png');
+  secondBestImg = loadImage('assets/Password/1/secondBest.png');
+  BestImg = loadImage('assets/Password/1/Best.png');
   CybercrimeImg = loadImage('assets/CyberLaws/1/Cybercrime.png');
   LockedComputerImg = loadImage('assets/CyberLaws/1/lockedComputer.png');
   LockedOutImg = loadImage('assets/CyberLaws/1/lockedout.png');
@@ -179,10 +179,10 @@ function setup() {
   center3 = createVector(545, 285);
   center4 = createVector(545, 350);
 
-  SSH = new Sprite(width / 2 - 80, 285);
-  SSH.addImage(SSHImg);
-  SSH.collider = 'k';
-  SSHImg.resize(300, 0);
+  Password = new Sprite(width / 2 - 80, 285);
+  Password.addImage(PasswordImg);
+  Password.collider = 'k';
+  PasswordImg.resize(300, 0);
 
   cards = new Group();
   cards.collider = 'k';
@@ -204,35 +204,35 @@ function setup() {
   //LockedComputerImg.resize(200,0);
 
 
-  TCP3way = new cards.Sprite(width / 4 - 67, height - (height / 3) + 95);
-  TCP3way.addImage(TCP3wayImg);
-  TCP3way.scale = 0.6;
-  cards[0] = TCP3way;
-  TCP3way.originalPosition = createVector(width / 4 - 67, height - (height / 3) + 95);
+  worst = new cards.Sprite(width / 4 - 67, height - (height / 3) + 95);
+  worst.addImage(worstImg);
+  worst.scale = 0.6;
+  cards[0] = worst;
+  worst.originalPosition = createVector(width / 4 - 67, height - (height / 3) + 95);
 
-  Protocol = new cards.Sprite((width / 2 - 145), height - (height / 3) + 175);
-  Protocol.addImage(ProtocolImg);
-  Protocol.scale = 0.6;
-  cards[1] = Protocol;
-  Protocol.originalPosition = createVector(width / 2 - 145, height - (height / 3) + 175);
+  secondWorst = new cards.Sprite((width / 2 - 145), height - (height / 3) + 175);
+  secondWorst.addImage(secondWorstImg);
+  secondWorst.scale = 0.6;
+  cards[1] = secondWorst;
+  secondWorst.originalPosition = createVector(width / 2 - 145, height - (height / 3) + 175);
 
-  AlgNegoation = new cards.Sprite(width / 2 - 60, height - (height / 3) + 95);
-  AlgNegoation.addImage(AlgNegoationImg);
-  AlgNegoation.scale = 0.6;
-  cards[2] = AlgNegoation;
-  AlgNegoation.originalPosition = createVector(width / 2 - 60, height - (height / 3) + 95);
+  secondBest = new cards.Sprite(width / 2 - 60, height - (height / 3) + 95);
+  secondBest.addImage(secondBestImg);
+  secondBest.scale = 0.6;
+  cards[2] = secondBest;
+  secondBest.originalPosition = createVector(width / 2 - 60, height - (height / 3) + 95);
 
-  Diffie = new cards.Sprite(width / 2 + 33, height - (height / 3) + 175);
-  Diffie.addImage(DiffieImg);
-  Diffie.scale = 0.6;
-  cards[3] = Diffie;
-  Diffie.originalPosition = createVector(width / 2 + 33, height - (height / 3) + 175);
+  Best = new cards.Sprite(width / 2 + 33, height - (height / 3) + 175);
+  Best.addImage(BestImg);
+  Best.scale = 0.6;
+  cards[3] = Best;
+  Best.originalPosition = createVector(width / 2 + 33, height - (height / 3) + 175);
 
-  AlgNegoation.pos = { x: -100, y: -100 };
-  Protocol.pos = { x: -100, y: -100 };
-  TCP3way.pos = { x: -100, y: -100 };
-  Diffie.pos = { x: -100, y: -100 };
-  SSH.pos = { x: -200, y: -200 };
+  secondBest.pos = { x: -100, y: -100 };
+  secondWorst.pos = { x: -100, y: -100 };
+  worst.pos = { x: -100, y: -100 };
+  Best.pos = { x: -100, y: -100 };
+  Password.pos = { x: -200, y: -200 };
   Cybercrime.pos = { x: -400, y: -400 };
   lockedComp.pos = { x: -400, y: -400 };
   lockedComp.pos = { x: -400, y: -400 };
@@ -270,7 +270,7 @@ function draw() {
     noStroke();
     fill(0);
     textAlign(CENTER, TOP); // Text alignment
-    text("\nThis diagram shows the SSH handshake between a client and server via a direct connection. Based on the diagram, drag and drop the steps of the process to the correct order.", 30, 20, 600, 360);
+    text("\nThis image shows some tips for what you should (green), and should not do (red) when creating your passwords. Using this information, place the given passwords in order of increasing security.", 30, 20, 600, 360);
 
     // Learn More Button Border
     stroke(255);
@@ -372,7 +372,7 @@ function showStartScreen() {
   fill(255); // White color
   textSize(32); // Font size
   textAlign(CENTER, CENTER); // Text alignment
-  text("SSH Handshake\n\n", width / 2, height / 2 - 200);
+  text("Password Security\n\n", width / 2, height / 2 - 200);
 
   // Instructions button
   fill(255);
