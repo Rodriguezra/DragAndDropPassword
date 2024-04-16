@@ -206,25 +206,25 @@ function setup() {
 
   worst = new cards.Sprite(width / 4 - 67, height - (height / 3) + 95);
   worst.addImage(worstImg);
-  worst.scale = 0.6;
+  worst.scale = 1.1;
   cards[0] = worst;
   worst.originalPosition = createVector(width / 4 - 67, height - (height / 3) + 95);
 
   secondWorst = new cards.Sprite((width / 2 - 145), height - (height / 3) + 175);
   secondWorst.addImage(secondWorstImg);
-  secondWorst.scale = 0.6;
+  secondWorst.scale = 1.1;
   cards[1] = secondWorst;
   secondWorst.originalPosition = createVector(width / 2 - 145, height - (height / 3) + 175);
 
   secondBest = new cards.Sprite(width / 2 - 60, height - (height / 3) + 95);
   secondBest.addImage(secondBestImg);
-  secondBest.scale = 0.6;
+  secondBest.scale = 1.0;
   cards[2] = secondBest;
   secondBest.originalPosition = createVector(width / 2 - 60, height - (height / 3) + 95);
 
   Best = new cards.Sprite(width / 2 + 33, height - (height / 3) + 175);
   Best.addImage(BestImg);
-  Best.scale = 0.6;
+  Best.scale = .9;
   cards[3] = Best;
   Best.originalPosition = createVector(width / 2 + 33, height - (height / 3) + 175);
 
