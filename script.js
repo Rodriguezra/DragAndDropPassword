@@ -182,7 +182,8 @@ function setup() {
   Password = new Sprite(width / 2 - 80, 285);
   Password.addImage(PasswordImg);
   Password.collider = 'k';
-  PasswordImg.resize(300, 0);
+  Password.scale = .4;
+ // PasswordImg.resize(300, 0);
 
   cards = new Group();
   cards.collider = 'k';
