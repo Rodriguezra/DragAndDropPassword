@@ -413,7 +413,7 @@ function draw() {
 
 function windowResized() { //Adjusts size of canvas and screen elements based on screen size 
   resizeCanvas(windowWidth, windowHeight);
-  Password.scale = .0004 * width;
+  Password.scale = .00035 * width;
   Password.pos = { x: width * .3, y: height / 2 - 10 };
   secondWorst.scale = 0.00075 * width;
   secondWorst.originalPosition = createVector(width * .3716, height - 70);
