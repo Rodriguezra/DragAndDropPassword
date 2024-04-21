@@ -382,7 +382,6 @@ function draw() {
   checkIfConfirm();
   //Check if we win!!!
   if (confirm && !cancel) {
-    console.log("hello");
     const c = color(0, 179, 115);
     fill(255);
     noStroke();
