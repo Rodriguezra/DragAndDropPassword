@@ -79,7 +79,7 @@ function mousePressed() {
       passLock.pos = { x: width / 2, y: 160 + 95 };
     }
   }
-  else if (screen == 2 && confirm && !cancel) { //checks if user wins or loses from submit prompt
+  else if (screen === 2 && confirm && !cancel) { //checks if user wins or loses from submit prompt
     if (mouseX > width / 2 + 20 && mouseX < width / 2 + 140 && mouseY > height - 80 && mouseY < height - 40) {
       buttonPress.play();
       if (
@@ -100,7 +100,7 @@ function mousePressed() {
         confirm = false;
       }
     }
-    else if (mouseX > width / 2 - 120 && mouseX < width / 2 && mouseY > height - 80 && mouseY < height - 40) {
+    else if (mouseX > width / 2 - 120 && mouseX < width / 2 && mouseY > height - 80 && mouseY < height - 40) { //cancel button
       buttonPress.play();
       confirm = false;
       cancel = true;
@@ -182,11 +182,16 @@ function snapToCenter(card) {
   }
 }
 
-function checkIfConfirm() { //submit screen appears if all 5 cards have been snapped to a position
+function checkIfConfirm() { //submit screen appears if all 4 cards have been snapped to a position
   let numSnapped = 0;
   for (let card of cards) {
-    if ((card.x == center1.x && card.y == center1.y) || (card.x == center2.x && card.y == center2.y) || (card.x == center3.x && card.y == center3.y) || (card.x == center4.x && card.y == center4.y)) {
-      numSnapped++;
+    if (
+      dist(card.x, card.y, center1.x, center1.y) < 1 ||
+      dist(card.x, card.y, center2.x, center2.y) < 1 ||
+      dist(card.x, card.y, center3.x, center3.y) < 1 ||
+      dist(card.x, card.y, center4.x, center4.y) < 1 
+    ) {
+        numSnapped++;
     }
   }
   if (numSnapped == 4) {
